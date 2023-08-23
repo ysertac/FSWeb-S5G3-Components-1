@@ -120,6 +120,7 @@ const articles = document.querySelector(".articles");
 function haberYapici(haberler) {
   const article = document.createElement("div");
   article.classList = "article";
+
   const baslik = document.createElement("h2");
   baslik.textContent = haberler.baslik;
 
@@ -151,38 +152,7 @@ function haberYapici(haberler) {
   return article;
 }
 
-for (let haber of data) {
-  const haberDiv = haberYapici(haber);
-  articles.append(haberDiv);
+for (let i = 0; i < data.length; i++) {
+  const haber = haberYapici(data[i]);
+  articles.append(haber);
 }
-
-/* function haberYapici(haberler) {
-  haberler.forEach((value) => {
-    let article = document.createElement("div");
-    article.classList = "article";
-    const baslik = document.createElement("h2");
-    const tarih = document.createElement("p");
-    const paragraf1 = document.createElement("p");
-    const paragraf2 = document.createElement("p");
-    const paragraf3 = document.createElement("p");
-    const button = document.createElement("button");
-    button.classList = "expandButton";
-    button.addEventListener("click", () => {
-      article.classList.toggle("article-open");
-    });
-    baslik.textContent = `${value.baslik}`;
-    tarih.textContent = `${value.tarih}`;
-    paragraf1.textContent = `${value.ilkParagraf}`;
-    paragraf2.textContent = `${value.ikinciParagraf}`;
-    paragraf3.textContent = `${value.ucuncuParagraf}`;
-    button.textContent = "+";
-    article.append(baslik);
-    article.append(tarih);
-    article.append(paragraf1);
-    article.append(paragraf2);
-    article.append(paragraf3);
-    article.append(button);
-    articles.append(article);
-  });
-}
-haberYapici(data); */
