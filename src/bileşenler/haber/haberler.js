@@ -115,3 +115,74 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+const articles = document.querySelector(".articles");
+function haberYapici(haberler) {
+  const article = document.createElement("div");
+  article.classList = "article";
+  const baslik = document.createElement("h2");
+  baslik.textContent = haberler.baslik;
+
+  const tarih = document.createElement("p");
+  tarih.textContent = haberler.tarih;
+
+  const paragraf1 = document.createElement("p");
+  paragraf1.textContent = haberler.ilkParagraf;
+
+  const paragraf2 = document.createElement("p");
+  paragraf2.textContent = haberler.ikinciParagraf;
+
+  const paragraf3 = document.createElement("p");
+  paragraf3.textContent = haberler.ucuncuParagraf;
+
+  const button = document.createElement("button");
+  button.classList = "expandButton";
+  button.textContent = "+";
+  button.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  });
+
+  article.append(baslik);
+  article.append(tarih);
+  article.append(paragraf1);
+  article.append(paragraf2);
+  article.append(paragraf3);
+  article.append(button);
+  return article;
+}
+
+for (let haber of data) {
+  const haberDiv = haberYapici(haber);
+  articles.append(haberDiv);
+}
+
+/* function haberYapici(haberler) {
+  haberler.forEach((value) => {
+    let article = document.createElement("div");
+    article.classList = "article";
+    const baslik = document.createElement("h2");
+    const tarih = document.createElement("p");
+    const paragraf1 = document.createElement("p");
+    const paragraf2 = document.createElement("p");
+    const paragraf3 = document.createElement("p");
+    const button = document.createElement("button");
+    button.classList = "expandButton";
+    button.addEventListener("click", () => {
+      article.classList.toggle("article-open");
+    });
+    baslik.textContent = `${value.baslik}`;
+    tarih.textContent = `${value.tarih}`;
+    paragraf1.textContent = `${value.ilkParagraf}`;
+    paragraf2.textContent = `${value.ikinciParagraf}`;
+    paragraf3.textContent = `${value.ucuncuParagraf}`;
+    button.textContent = "+";
+    article.append(baslik);
+    article.append(tarih);
+    article.append(paragraf1);
+    article.append(paragraf2);
+    article.append(paragraf3);
+    article.append(button);
+    articles.append(article);
+  });
+}
+haberYapici(data); */
